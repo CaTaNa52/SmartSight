@@ -18,4 +18,24 @@
 <!-- MAINTAINER:END -->
 
 # SmartSight
-SmartSight nutzt den Raspberry Pi und eine Kamera, um Katzen auf deinem Grundstück zu erkennen. Bei Erkennung einer Katze wird ein hochfrequentes Signal abgegeben, das die Tiere vertreibt, ohne sie zu schädigen. Eine tierfreundliche Lösung zur Katzenabwehr, basierend auf Bildverarbeitung und Ultraschalltechnologie.
+
+SmartSight ist ein innovatives System zur Erkennung von Katzen und deren tierfreundlicher Abwehr. Mithilfe des Raspberry Pi, einer Kamera und OpenCV erkennt das System Katzen und gibt ein hochfrequentes Signal ab, um sie vom Grundstück fernzuhalten.
+
+## Funktionen
+- **Katzenerkennung**: Erkennt Katzen mithilfe von Bildverarbeitung (OpenCV).
+- **Ultraschall-Abwehr**: Gibt ein hochfrequentes Signal ab, um Katzen zu vertreiben, ohne ihnen zu schaden.
+- **Automatisierung**: Läuft vollständig autonom auf einem Raspberry Pi.
+
+## Voraussetzungen
+- Raspberry Pi (Zero, 3, 4 oder neuer)
+- Raspberry Pi Kamera (oder kompatible USB-Kamera)
+- Lautsprecher oder Ultraschall-Generator für die Abwehr
+- Installierte Software:
+  - Python 3
+  - OpenCV
+  - NumPy
+
+## Installation
+1. Raspberry Pi einrichten und sicherstellen, dass die Kamera aktiviert ist:
+   ```bash
+   sudo raspi-config

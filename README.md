@@ -42,7 +42,7 @@ SmartSight ist ein innovatives System zur Erkennung von Katzen und deren tierfre
 
 2. Repository klonen:
     ```bash
-    git clone https://github.com/dein-benutzername/smartsight.git
+    git clone https://github.com/CaTaNa52/SmartSight.git
     cd smartsight
 
 3. Abhängigkeiten installieren:

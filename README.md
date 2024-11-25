@@ -62,8 +62,8 @@ SmartSight ist ein innovatives System zur Erkennung von Katzen und deren tierfre
 2. Das System startet die Katzenerkennung und gibt bei einer Erkennung ein Signal ab.
 
 ## Struktur des Projekts
-- smartsight.py: Hauptprogramm zur Katzenerkennung und Signalsteuerung.
-- kamera_test.py: Testskript für die Kamera.
+- camera_stream.py: Hauptprogramm zur Katzenerkennung und Signalsteuerung.
+- camera_test.py: Testskript für die Kamera.
 - requirements.txt: Enthält alle benötigten Python-Pakete.
 
 ## Zukunftsplanung

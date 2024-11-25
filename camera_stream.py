@@ -13,7 +13,7 @@ if not cap.isOpened():
     exit()
 
 # Load pre-trained Haar Cascade classifier for cat face detection
-cat_cascade = cv2.CascadeClassifier('haarcascade_fullbody.xml')
+cat_cascade = cv2.CascadeClassifier('./assets/haarcascade_fullbody.xml')
 
 # Main loop to capture frames and detect cats
 while True:

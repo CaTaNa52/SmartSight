@@ -1,36 +1,34 @@
-import cv2  # Import the OpenCV library for image and video processing
+# SmartSight Project - Camera Test
 
-def test_camera():
-    # Opens the first connected camera (index 0)
-    cap = cv2.VideoCapture(0)
+# Import necessary libraries
+import cv2  # OpenCV for image processing and video capture
 
-    # Checks if the camera was successfully opened
-    if not cap.isOpened():
-        print("Could not open the camera.")
-        return  # Ends the function if the camera cannot be opened
+# Initialize the Pi Camera
+cap = cv2.VideoCapture(0)  # Open the Pi camera (index 0)
 
-    print("Press 'q' to close the window.")  # Instructions for the user
+# Check if the camera opened successfully
+if not cap.isOpened():
+    print("[ERROR] Unable to access the camera.")
+    exit()
 
-    # Starts a loop that continuously captures frames from the camera
-    while True:
-        ret, frame = cap.read()  # Reads the next frame from the camera
-        if not ret:  # If the frame could not be read correctly
-            print("Error reading frame.")
-            break  # Breaks the loop if there is an issue with reading the frame
+print("[INFO] Camera is working. Press 'q' to exit.")
 
-        # Displays the captured frame in a window
-        cv2.imshow("Camera Test", frame)
+# Main loop to capture and display the video feed
+while True:
+    ret, frame = cap.read()  # Capture frame from the camera
 
-        # Waits for 1 millisecond for a key press and checks if 'q' is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break  # Breaks the loop if the user presses the 'q' key
+    # If frame is not captured successfully, break the loop
+    if not ret:
+        print("[ERROR] Failed to capture frame.")
+        break
 
-    # Releases the camera resources once the loop ends
-    cap.release()
+    # Display the captured frame
+    cv2.imshow('Camera Test - Press q to Exit', frame)
 
-    # Closes all OpenCV windows
-    cv2.destroyAllWindows()
+    # Exit the loop if 'q' is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
-# Starts the camera test function when this script is run directly
-if __name__ == "__main__":
-    test_camera()
+# Release the camera and close any OpenCV windows
+cap.release()
+cv2.destroyAllWindows()

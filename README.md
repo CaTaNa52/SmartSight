@@ -52,12 +52,12 @@ SmartSight ist ein innovatives System zur Erkennung von Katzen und deren tierfre
     
 4. Kamera testen:
     ```bash
-    python3 kamera_test.py
+    python3 camera_test.py
 
 ## Verwendung
 1. Programm starten:
     ```bash
-    python3 smartsight.py
+    python3 camera_stream.py
 
 2. Das System startet die Katzenerkennung und gibt bei einer Erkennung ein Signal ab.
 

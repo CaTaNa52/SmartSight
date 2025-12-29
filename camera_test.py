@@ -1,34 +1,34 @@
 # SmartSight Project - Camera Test
 
-# Import necessary libraries
-import cv2  # OpenCV for image processing and video capture
+# Notwendige Bibliotheken importieren
+import cv2  # OpenCV für Bildverarbeitung und Videoaufnahme
 
-# Initialize the Pi Camera
-cap = cv2.VideoCapture(0)  # Open the Pi camera (index 0)
+# Pi-Kamera initialisieren
+cap = cv2.VideoCapture(0)  # Pi-Kamera öffnen (Index 0)
 
-# Check if the camera opened successfully
+# Überprüfen, ob die Kamera erfolgreich geöffnet wurde
 if not cap.isOpened():
-    print("[ERROR] Unable to access the camera.")
+    print("[FEHLER] Zugriff auf die Kamera nicht möglich.")
     exit()
 
-print("[INFO] Camera is working. Press 'q' to exit.")
+print("[INFO] Kamera funktioniert. Drücke 'q', um zu beenden.")
 
-# Main loop to capture and display the video feed
+# Hauptschleife, um das Video aufzunehmen und anzuzeigen
 while True:
-    ret, frame = cap.read()  # Capture frame from the camera
+    ret, frame = cap.read()  # Frame von der Kamera aufnehmen
 
-    # If frame is not captured successfully, break the loop
+    # Wenn das Frame nicht erfolgreich aufgenommen wurde, Schleife beenden
     if not ret:
-        print("[ERROR] Failed to capture frame.")
+        print("[FEHLER] Frame konnte nicht aufgenommen werden.")
         break
 
-    # Display the captured frame
-    cv2.imshow('Camera Test - Press q to Exit', frame)
+    # Das aufgenommene Frame anzeigen
+    cv2.imshow('Kamera-Test - Drücke q zum Beenden', frame)
 
-    # Exit the loop if 'q' is pressed
+    # Schleife beenden, wenn 'q' gedrückt wird
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release the camera and close any OpenCV windows
+# Kamera freigeben und alle OpenCV-Fenster schließen
 cap.release()
 cv2.destroyAllWindows()

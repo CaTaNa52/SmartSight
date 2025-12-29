@@ -1,53 +1,53 @@
 # SmartSight Project - Cat Detection
 
-# Import necessary libraries
-import cv2                   # OpenCV for image processing and video capture
-import numpy as np           # NumPy for numerical operations
+# Notwendige Bibliotheken importieren
+import cv2                   # OpenCV für Bildverarbeitung und Videoaufnahme
+import numpy as np           # NumPy für numerische Operationen
 
-# Initialize the Pi Camera (use camera index 0)
+# Pi-Kamera initialisieren (Kameraindex 0 verwenden)
 cap = cv2.VideoCapture(0)
 
-# Check if the camera opened successfully
+# Überprüfen, ob die Kamera erfolgreich geöffnet wurde
 if not cap.isOpened():
-    print("[ERROR] Unable to access the camera.")
+    print("[FEHLER] Zugriff auf die Kamera nicht möglich.")
     exit()
 
-# Load pre-trained Haar Cascade classifier for full body detection
-# Make sure the path to the haarcascade file is correct
+# Vorgefertigten Haar-Cascade-Klassifikator für Ganzkörpererkennung laden
+# Stelle sicher, dass der Pfad zur haarcascade-Datei korrekt ist
 cat_cascade = cv2.CascadeClassifier('./assets/haarcascade_fullbody.xml')
 
-# Check if the classifier is loaded properly
+# Überprüfen, ob der Classifier korrekt geladen wurde
 if cat_cascade.empty():
-    print("[ERROR] Could not load the Haar Cascade classifier.")
+    print("[FEHLER] Haar-Cascade-Klassifikator konnte nicht geladen werden.")
     exit()
 
-# Main loop to capture frames and detect cats
+# Hauptschleife, um Frames aufzunehmen und Katzen zu erkennen
 while True:
-    # Capture frame from the camera
+    # Frame von der Kamera aufnehmen
     ret, frame = cap.read()
     
-    # If frame is not captured successfully, break the loop
+    # Wenn das Frame nicht erfolgreich aufgenommen wurde, Schleife beenden
     if not ret:
-        print("[ERROR] Failed to capture frame.")
+        print("[FEHLER] Frame konnte nicht aufgenommen werden.")
         break
 
-    # Convert frame to grayscale for face detection
+    # Frame in Graustufen umwandeln für die Erkennung
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Detect cats (full bodies) in the grayscale image
+    # Katzen (Ganzkörper) im Graustufenbild erkennen
     cats = cat_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
-    # Draw rectangles around detected cat faces/bodies
+    # Rechtecke um erkannte Katzen zeichnen
     for (x, y, w, h) in cats:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Blue rectangle
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)  # Blaues Rechteck
 
-    # Display the resulting frame with detected cats
-    cv2.imshow('SmartSight - Cat Detection', frame)
+    # Das Ergebnisframe mit erkannten Katzen anzeigen
+    cv2.imshow('SmartSight - Katzenerkennung', frame)
 
-    # Exit the loop if 'q' is pressed
+    # Schleife beenden, wenn 'q' gedrückt wird
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release the camera and close any OpenCV windows
+# Kamera freigeben und alle OpenCV-Fenster schließen
 cap.release()
 cv2.destroyAllWindows()
